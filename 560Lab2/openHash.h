@@ -8,9 +8,15 @@ class OpenHash
 public:
   OpenHash(int size);
   ~OpenHash();
-  void insert(insertValue);
+  bool insert(int insertValue);
   void print();
-  bool find(searchValue);
-  bool deleteNode();
-  
-}
+  int hash(int a);
+
+  bool find(int searchValue);
+  bool deleteNode(int deleteValue);
+private:
+  int hashSize;
+  List *topLevel;
+
+};
+#endif

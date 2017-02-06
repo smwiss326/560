@@ -2,18 +2,22 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include "openHash.h"
 
 
 int main(){
   std:: ifstream fin("data.txt");
-  List myList = List{};
+  int size;
+  fin >>size;
+  OpenHash myHash = OpenHash(size);
   int integerValue;
   while(!fin.eof())
   {
     fin>>integerValue;
-    myList.insert(integerValue);
+    myHash.insert(integerValue);
   }
-  myList.print();
+  myHash.print();
+
   int option;
   int valueToremoveInsert;
   do {
@@ -25,33 +29,27 @@ int main(){
 
     std::cout<<"2- delete\n";
 
-    std::cout<<"3- reverse\n";
+    std::cout<<"3- print\n";
 
-    std::cout<<"4- print\n";
+    std::cout<<"4- exit\n";
 
-    std::cout<<"5- exit \n";
     std::cin >> option;
     if(option == 1)
     {
       std::cout<<"Enter a value to insert:\n";
       std::cin>>valueToremoveInsert;
-      myList.insert(valueToremoveInsert);
+      myHash.insert(valueToremoveInsert);
     }
     if(option == 2)
     {
       std::cout<<"Enter a value to remove:\n";
       std::cin>>valueToremoveInsert;
-      myList.remove(valueToremoveInsert);
+      myHash.deleteNode(valueToremoveInsert);
     }
-    if(option == 3 )
+    if(option == 3)
     {
-      myList.reverse();
+      std::cout<<"Hash Table:";
+      myHash.print();
     }
-    if(option == 4)
-    {
-      std::cout<<"List:";
-      myList.print();
-    }
-  } while(option <5);
-
+  } while(option <4);
 }

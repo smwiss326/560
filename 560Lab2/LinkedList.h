@@ -14,12 +14,13 @@ public:
   bool insert(int a);
   bool innerInsert(Node* head, int a);
   bool print();
-  //
   void reverse();
   bool innerPrint(Node* n_ptr);
   bool remove(int a);
-  bool  innerRemove(Node* head, int a);
+  bool innerRemove(Node* head, int a);
   void innerReverse( Node*& head);
-
+  //added for lab2
+  bool find( int findValue);
+  bool innerFind(Node* head, int findValue);
 };
 #endif

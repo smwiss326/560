@@ -22,6 +22,18 @@ List:: ~List()
   }
   head = nullptr;
 }
+bool List:: find( int findValue)
+{
+  return innerFind(head, findValue);
+}
+bool List ::innerFind(Node*head, int findValue)
+{
+  if (head == nullptr){return false;}
+  else if(head->valueGet() == findValue){return true;}
+  else {return innerFind(head->nextGet(),findValue);}
+}
+
+
 void List:: reverse()
 {
   if(head == nullptr)
