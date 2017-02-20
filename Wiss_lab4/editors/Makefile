@@ -13,7 +13,11 @@ LinkedList.o: LinkedList.cpp
 	g++ -g -Wall -std=c++11 -c LinkedList.cpp
 Node.o: Node.cpp
 	g++ -g -Wall -std=c++11 -c Node.cpp
-
+tar:
+	mkdir editors
+	cp dot_vimrc Makefile simple.* editors/
+	tar cvzf eecs678-editors-lab.tar.gz editors
+	rm -rf editors
 clean:
 	rm *.o lab4
 	echo clean done

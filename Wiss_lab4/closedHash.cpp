@@ -90,7 +90,7 @@ int ClosedHash::hash(int insertValue, bool quadHash, int iter) //method to deter
   }
 
 }
-int k = 60000;
+int k = 600000;
 bool ClosedHash::insert(int insertValue) // check for duplicates - insert into correct bucket dependant on hash method
 {
   if( find(insertValue))

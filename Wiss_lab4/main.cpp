@@ -57,7 +57,7 @@ int main()
   float lf[8] = {.2,.3,.4,.5,.6,.7,.8,.9};
 
   int arrofAmts [8] = {amount1,amount2,amount3,amount4,amount5,amount6,amount7,amount8};
-  Timer t;
+  Timer tO,tQ,tD;
   for (int j = 0; j < 8;j++)
   {
     double qTime = 0;
@@ -66,35 +66,40 @@ int main()
     for(int i = 0; i < 5; i++)
     {
       srand(time(NULL));
-      OpenHash oHash = OpenHash(tableSize);
-      ClosedHash dHash = ClosedHash(tableSize);
-      ClosedHash qHash = ClosedHash(tableSize);
+      OpenHash oHash =  OpenHash(tableSize);
+      ClosedHash dHash =  ClosedHash(tableSize);
+      ClosedHash qHash =  ClosedHash(tableSize);
       qHash.setType(1);
       dHash.setType(2);
-      t.start();
+      tO.start();
       for(int k = 0; k <arrofAmts[j]; k++)
       {
         oHash.insert(rand() % maxValue);
       }
-      oTime += t.stop();
-      t.start();
+      oTime += tO.stop();
+      tQ.start();
       for(int k = 0; k <arrofAmts[j]; k++)
       {
         dHash.insert(rand() % maxValue);
       }
-      dTime += t.stop();
-      t.start();
+      dTime += tQ.stop();
+      tD.start();
       for(int k = 0; k <arrofAmts[j]; k++)
       {
         qHash.insert(rand() % maxValue);
       }
-      qTime += t.stop();
+      qTime += tD.stop();
+
 
     }
-  std :: cout << "Load Factor: " << lf[j] <<endl;
-  std :: cout << "Average OpenHashing Time: " << (oTime/5) << endl;
-  std :: cout << "Average QuadHashing Time: " << (qTime/5) << endl;
-  std :: cout << "Average DoubleHashing Time: " << (dTime/5) << endl;
+    
+    std :: cout << "Load Factor: " << lf[j] <<endl;
+    std :: cout << "Average OpenHashing Time: " << (oTime/5) << endl;
+    std :: cout << "Average QuadHashing Time: " << (qTime/5) << endl;
+    std :: cout << "Average DoubleHashing Time: " << (dTime/5) << endl;
+    std :: cout << " -----------------------------------" << endl;
+
+
   }
 }
 

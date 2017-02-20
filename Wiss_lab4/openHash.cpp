@@ -37,7 +37,10 @@ int OpenHash::hash(int insertValue)
 bool OpenHash::insert(int insertValue)
 {
   int bucket = hash(insertValue);
-  return(topLevel[bucket].insert(insertValue));
+  if(!find(insertValue))
+  {
+    return(topLevel[bucket].insert(insertValue));
+  }
 }
 
 bool OpenHash::deleteNode(int deleteValue)
